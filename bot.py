@@ -41,16 +41,16 @@ def ask_ai(question, model_id):
         return f"Ошибка: {e}"
 
 def main_keyboard():
-    web_app = WebAppInfo(url="https://YOUR_RAILWAY_URL/webapp")
+    web_app = WebAppInfo(url="https://aibot-production-1712.up.railway.app/webapp")
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Открыть чат с ИИ", web_app=web_app)],
-        [InlineKeyboardButton(text="О боте", callback_data="about")]
+        [InlineKeyboardButton(text="🌐 Открыть чат с ИИ", web_app=web_app)],
+        [InlineKeyboardButton(text="ℹ️ О боте", callback_data="about")]
     ])
 
 @dp.message(CommandStart())
 async def start(message: Message):
     await message.answer(
-        "Добро пожаловать!\n\nЯ бот с веб-интерфейсом для общения с ИИ.\nИспользую GitHub Models.\n\nНажми на кнопку ниже, чтобы открыть чат.",
+        "🤖 Добро пожаловать!\n\nЯ бот с веб-интерфейсом для общения с ИИ.\nИспользую GitHub Models.\n\nНажми на кнопку ниже, чтобы открыть чат.",
         reply_markup=main_keyboard()
     )
 
@@ -58,7 +58,7 @@ async def start(message: Message):
 async def about(callback: CallbackQuery):
     await callback.answer()
     await callback.message.edit_text(
-        "О боте\n\nИспользует GitHub Models\nМодели: Llama 3.2, Phi-3.5, Mistral 7B\n\nСоздатель: @ownnadd",
+        "ℹ️ О боте\n\nИспользует GitHub Models\nМодели: Llama 3.2, Phi-3.5, Mistral 7B\n\nСоздатель: @ownnadd",
         reply_markup=main_keyboard()
     )
 
