@@ -17,13 +17,11 @@ PORT = int(os.environ.get("PORT", 8080))
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-# Настройка GitHub Models клиента
 client = OpenAI(
     api_key=GITHUB_TOKEN,
     base_url="https://models.inference.ai.azure.com"
 )
 
-# Доступные модели
 MODELS = {
     "llama": {"name": "Llama 3.2", "id": "meta-llama/llama-3.2-3b-instruct"},
     "phi": {"name": "Phi-3.5 Mini", "id": "microsoft/phi-3.5-mini-128k-instruct"},
@@ -43,7 +41,7 @@ def ask_ai(question, model_id):
         return f"Ошибка: {e}"
 
 def main_keyboard():
-    web_app = WebAppInfo(url="https://aibot-production-1712.up.railway.app/webapp")
+    web_app = WebAppInfo(url="https://aibot-production-5ec8.up.railway.app/webapp")
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🌐 Открыть чат с ИИ", web_app=web_app)],
         [InlineKeyboardButton(text="ℹ️ О боте", callback_data="about")]
